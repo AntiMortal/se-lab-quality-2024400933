@@ -1,33 +1,24 @@
-public class before {
-    // 坏味道：重复代码 + 未使用变量
-    public static void calculateStudentScore1(int math, int english, int chinese) {
-        int unused = 100; // 未使用变量，CodeQL 必报
-        int sum = math + english + chinese;
-        double avg = sum / 3.0;
-        System.out.println("总分：" + sum);
-        System.out.println("平均分：" + avg);
-        if (avg >= 60) {
-            System.out.println("成绩合格");
-        } else {
-            System.out.println("成绩不合格");
-        }
+公共 class before {
+
+    // 1. 未使用变量（必报）
+    // 2. 重复代码（必报）
+    public static void printStudent(int age, String name) {
+        int unusedValue = 999; // 未使用变量
+        
+        System.out.println("姓名：" + name);
+        System.out.println("年龄：" + age);
+        System.out.println("信息打印完成");
     }
 
-    // 和上面几乎完全重复的代码！
-    public static void calculateStudentScore2(int math, int english, int chinese) {
-        int sum = math + english + chinese;
-        double avg = sum / 3.0;
-        System.out.println("总分：" + sum);
-        System.out.println("平均分：" + avg);
-        if (avg >= 60) {
-            System.out.println("成绩合格");
-        } else {
-            System.out.println("成绩不合格");
-        }
+    // 完全重复的代码！！！
+    public static void printTeacher(int age, String name) {
+        System.out.println("姓名：" + name);
+        System.out.println("年龄：" + age);
+        System.out.println("信息打印完成");
     }
 
     public static void main(String[] args) {
-        calculateStudentScore1(80, 75, 90);
-        calculateStudentScore2(60, 50, 70);
+        printStudent(20, "张三");
+        printTeacher(40, "李老师");
     }
 }
